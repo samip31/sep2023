@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sep2024/api_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,10 +60,16 @@ class HomePage extends StatelessWidget {
           ),
 
           GestureDetector(
-            onTap: () {
+            onTap: ()async {
+
+              ApiHelper apiHelper = ApiHelper();
+              User user = await apiHelper.getUser();
+
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NextScreen()),
+                MaterialPageRoute(builder: (context) => NextScreen(
+                  user: user
+                )),
               );
             },
             child: Container(
@@ -85,7 +92,8 @@ class HomePage extends StatelessWidget {
 }
 
 class NextScreen extends StatelessWidget {
-  NextScreen({super.key});
+  NextScreen({super.key,required this.user });
+  User user;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -100,6 +108,9 @@ class NextScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Text("Name: ${user.name}"),
+                Text("Phone: ${user.phone}"),
+
                 Text(
                   "Sign in to our application",
                   style: TextStyle(fontSize: 18),
@@ -138,4 +149,5 @@ class NextScreen extends StatelessWidget {
       ),
     );
   }
+
 }
