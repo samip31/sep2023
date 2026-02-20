@@ -12,19 +12,20 @@ class HotelView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Book Hotels")),
-      body: SafeArea(
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            Result? hotel = hotelController.hotels[index];
-            return HotelCard(
-              imageUrl: "",
-              hotelName: hotel?.name ?? "",
-              location: hotel?.name ?? "",
+      body: Obx(()=> SafeArea(
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              Result? hotel = hotelController.hotels[index];
+              return HotelCard(
+                imageUrl: "",
+                hotelName: hotel?.name ?? "",
+                location: hotel?.name ?? "",
 
-              pricePerNight: hotel?.pricePerNight ?? "",
-            );
-          },
-          itemCount: hotelController.hotels.length,
+                pricePerNight: hotel?.pricePerNight ?? "",
+              );
+            },
+            itemCount: hotelController.hotels.length,
+          ),
         ),
       ),
     );

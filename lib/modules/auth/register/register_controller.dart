@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -18,6 +19,7 @@ class RegisterController extends GetxController {
 
     final response = await registerRepository.register(body);
     if(response.status == ApiStatus.SUCCESS){
+
     }
   }
 }

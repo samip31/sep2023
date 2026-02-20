@@ -24,11 +24,10 @@ class LoginController extends GetxController {
     final response = await loginRepository.login(body);
     if(response.status == ApiStatus.SUCCESS){
       await prefs.setString('userToken', response.response?.result?.token??"");
-
-
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => SplashScreen()),
+        
       );
     }
   }

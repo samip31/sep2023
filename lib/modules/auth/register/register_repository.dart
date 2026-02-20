@@ -4,6 +4,7 @@ import 'package:sep2024/service/api_client.dart';
 import 'package:sep2024/service/api_end_point.dart';
 
 class RegisterRepository {
+
   final ApiClient apiClient = ApiClient();
 
   Future<ApiResponse<RegisterResponse>> register(jsonBody) async {
@@ -20,7 +21,7 @@ class RegisterRepository {
 class RegisterResponse {
   bool? response;
   String? msg;
-  var result;
+  Null? result;
 
   RegisterResponse({this.response, this.msg, this.result});
 
@@ -38,4 +39,5 @@ class RegisterResponse {
     return data;
   }
 }
+
 

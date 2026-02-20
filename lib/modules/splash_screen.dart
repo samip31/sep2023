@@ -24,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     String? token = prefs.getString('userToken');
 
     if (token == null) {
+      print("Null token");
       // User not logged in
       Navigator.pushReplacement(
         context,
